@@ -14,15 +14,15 @@ Sugalvoti probleminę situaciją, kurioje keli procesai naudoja resursą/resursu
 
 Kitas, t.y., sinchronizuotas programos veikimo režimas (valdomas komandinės eilutės parametru bei naudojantis synchronized Java (C#) metodus arba semaforus/mutex'sus C,C++ aplinkose) turi užtikrinti teisingą programos veikimą.
 
-Programos komentare trumpai aprašyti dalykinę sritį bei problemą. Vizualiai (komentarais) išskirti kode kritines sekcijas. Siekiant padidinti programos nedeterminizmą leidžiama įtraukti atsitiktinius gijų vykdymo užlaikymus (Thread.sleep(...)), tačiau, tik ištyrus, jog be užlaikymų programa nepakliūna į nepageidaujamas būsenas.
+Programos komentare trumpai aprašyti dalykinę sritį bei problemą. Vizualiai (komentarais) išskirti kode kritines sekcijas. Siekiant padidinti programos nedeterminizmą leidžiama įtraukti atsitiktinius gijų vykdymo užlaikymus (```Thread.sleep(...)```), tačiau, tik ištyrus, jog be užlaikymų programa nepakliūna į nepageidaujamas būsenas.
 
 <ins>Problemos pavyzdys:</ins> (nenaudoti atsiskaitant).
 
 Bendras resursas - dvi sąskaitos. Keli procesai vykdo pervedimus iš vienos sąskaitos į kitą. Nekorektiškas programos darbo rezultatas - pakitęs suminis pinigų likutis sąskaitose.
 
-1 pastaba. Nebus laikoma tinkama tokia programa, kuri iliustruoja gijų vykdymo nedeterminizmą, bet negalime nurodyti koks deterministinis vyksmas yra teisingas. Pavyzdžiui, netiks "PingPong" (žr. žemiau) pavidalo sprendimas. 2 pastaba. Nerašyti sudėtingų programų, kuriose procesai bendrauja tarpusavyje, naudodami įvykių mechanizmą (wait(), notify()).
+1 pastaba. Nebus laikoma tinkama tokia programa, kuri iliustruoja gijų vykdymo nedeterminizmą, bet negalime nurodyti koks deterministinis vyksmas yra teisingas. Pavyzdžiui, netiks "PingPong" (žr. žemiau) pavidalo sprendimas. 2 pastaba. Nerašyti sudėtingų programų, kuriose procesai bendrauja tarpusavyje, naudodami įvykių mechanizmą (```wait()```, ```notify()```).
 
-[Pavyzdys.java](./pavyzdys/Main.java) - užduoties sprendimo java šablonas (matematikams). PS studentams - nenaudoti!
+[Main.java](./pvz/Main.java) - užduoties sprendimo java šablonas (matematikams). PS studentams - nenaudoti!
 
 Jums gali praversti pirmojo užsiėmimo programos. PingPong programėlė, kuri demonstruoja gijų paleidimą , SUN'o gijų vedlys ar priminimas iš Java paskaitos apie gijas.
 
@@ -37,7 +37,7 @@ Tools: Java, C++, C#,  Python or other programming languages or WIN32 / POSIX or
 
 Program intended to be a console program. Scope: ~ 30-50 lines of code.
 
-Briefly describe the subject area and problem in the source file. Visually  highlight critical sections in the source code. In order to increase the non deterministic behaviour of the program, it is allowed to include random thread execution delays (Thread.sleep (...)), but only after careful examination that without delays the program does not fall into undesirable states.
+Briefly describe the subject area and problem in the source file. Visually  highlight critical sections in the source code. In order to increase the non deterministic behaviour of the program, it is allowed to include random thread execution delays (```Thread.sleep (...)```), but only after careful examination that without delays the program does not fall into undesirable states.
 
 Example of a problem: (do not use for  assignment purpose).
 
@@ -45,7 +45,7 @@ There are two accounts. Several processes transfers some amoun of money from fir
 
 <ins>Notes.</ins>
 * A program that illustrates the nondeterminism of thread execution will not be considered appropriate, if we cannot specify which deterministic result is being correct.
-* Do not write complex programs in which processes communicate with each other using the event mechanism (wait (), notify ()).
+* Do not write complex programs in which processes communicate with each other using the event mechanism (```wait()```, ```notify()```).
 
 The circumstances below must be disclosed:
 * which program output is considered correct?

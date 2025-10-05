@@ -24,7 +24,7 @@ Eksperimentiškai nustatyti algoritmo spartinimo, plečiamumo (scaling) bei vykd
 
 **Pastaba**. Rašydami (ypač) java programas, stenkitės išvengti pakartotinio objektų sukūrimo-atlaisvinimo, kadangi "šiukšlių surinkėjas" gali iškraipyti laikines programos vykdymo charakteristikas.
 
-Žemiau pateikta programa leidžia patikrinti java programos vykdymo spartinimą paskirties sistemoje: [TTest.java](./pvz/TTest.java), TTest.class (atnaujinta 2013-12-08).
+Žemiau pateikta programa leidžia patikrinti java programos vykdymo spartinimą paskirties sistemoje: [TTest.java](./pvz/TTest.java).
 
 
 ### Variantai
@@ -44,39 +44,32 @@ Gugliafrazė: "odd even sort"
 Gugliafrazė: "merge sort"
 
 <ins>4. Pirminių skaičių generavimas "Eratosthenes" rėčio metodu.</ins>  
-(Pirmasis pirminis skaicius 2. Išbraukiami visi kartotiniai  
-žinomam pirminiui skaičiui; tai kartojma su sekančiu neišbrauktu  
-pirminiu ir t.t.) Likę neišbraukti skaičiai - pirminiai.  
+(Pirmasis pirminis skaicius ``2``. Išbraukiami visi kartotiniai žinomam pirminiui skaičiui; tai kartojma su sekančiu neišbrauktu pirminiu ir t.t.) Likę neišbraukti skaičiai - pirminiai.  
 Gugliafrazė: "Eratosthenes prime sieve"
 
 <ins>5. Adaptyvusis integralo skaičiavimas.</ins>  
-Duota tolydi neneigiama funkcija f(X) ir du taškai a,b.  
-Rasti integralą  I[a,b] f(x) dx, aproksimuojant jį plotu figuros,  
-aprėžtos ašimi x, kreive f(x) bei tiesėmis y = a, y = b.  
-Sprendimo būdas - dalyti sritį [a,b] į daugelį mažesnių  
-sričių vertikaliomis linijomis ir sumuoti pastarųjų plotus,  
-kol 'nesukonverguos' (žr. konspektus).  
+Duota tolydi neneigiama funkcija ```f(X)``` ir du taškai ```a,b```.  
+Rasti integralą  ```I[a,b] f(x) dx```, aproksimuojant jį plotu figuros, aprėžtos ašimi x, kreive f(x) bei tiesėmis ```y = a, y = b```.  
+Sprendimo būdas - dalyti sritį ```[a,b]``` į daugelį mažesnių sričių vertikaliomis linijomis ir sumuoti pastarųjų plotus, kol 'nesukonverguos' (žr. konspektus).  
 Gugliafrazė: "Adaptive Quadrature"
 
 <ins>6. Šilumos pasiskirstymo lygties sprendimas.</ins>  
 Duotas pradinis temperatūrų pasiskirstymo masyvas.  
-Atlikti pastarojo iteratyvią transformaciją  
-V(i, j) = (V(i+1, j) + V(i, j+1) + V(i-1, j) + V(i, j-1)) / 4  
-kol "nenusistovės" (kraštinių piksel'ių reikšmės fiksuotos).  
+Atlikti pastarojo iteratyvią transformaciją ```V(i, j) = (V(i+1, j) + V(i, j+1) + V(i-1, j) + V(i, j-1)) / 4``` kol "nenusistovės" (kraštinių piksel'ių reikšmės fiksuotos).  
 Gugliafrazės: Laplace's heat equation  Jacobi iteration
 
 <ins>7. Ilgiausios Collatz'o iteracijos paieška</ins> duotajame skaičių intervale.  
-Kiekvienam i = 1,2,3,...  
-A(0) - pradinis iteracijos elementas, natūrinis.  
-A(i+1) = 3 * A(i) + 1, kai A(i) - nelyginis  
-A(i+1) = A(i) / 2,     kai A(i) - lyginis.
+Kiekvienam ```i = 1,2,3,...```  
+```A(0)``` - pradinis iteracijos elementas, natūrinis.  
+```A(i+1) = 3 * A(i) + 1```, kai ```A(i)``` - nelyginis  
+```A(i+1) = A(i) / 2```,     kai ```A(i)``` - lyginis.
 
 Pagal Collatz'o hipotezę, kiekvienam natūriniam n, po baigtinio
 skaičiaus žingsnių galima gauti 1.
 
-Pvz.: 7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1.
+Pvz.: ```7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1```.
 
-Taigi, skaičių [a,b] intervale reikia rasti skaičių n, kuris iteruoja
+Taigi, skaičių ```[a,b]``` intervale reikia rasti skaičių n, kuris iteruoja
 į 1-ą "ilgiausiai".
 
 Pastabos: skaičiams naudokite long tipą. Atkreipkite dėmesį, jog iteracijų skaičius labai skiriasi!
@@ -94,7 +87,7 @@ Gugliafrazė: "N-queen"
 Pageidautina rezultatą pavaizduoti vizualiai.
 
 <ins>\*11. Ilgiausio dviejų simbolių eilučių posekio radimas.</ins>  
-Gugliafrazė: "Longest common subsequence".
+Gugliafrazė: "Longest common subsequence"
 
 <ins>\*12. Susijusių sričių paveikslėlyje identifikavimas</ins>  
 Susijusioje srityje visi pikselio kaimynai (dešinė, kairė, viršus, apačia) turi tą pačią pikselio vertę. Pradžioje visi pikseliai sunumeruoti nuo 1 iki N*N (kitame masyve). Darbo pabaigoje susijusios srities pikseliai turi įgauti didžiausią reikšmę.  
@@ -104,5 +97,5 @@ Gugliafrazė:  "connected component labeling".
 Gugliafrazės: branch bound, Lipschitz Function
 
 <ins>\*14. N-kūnų simuliacijos atvejis</ins>  
-Atstumu l < 1, kūnų trauka tenkina Niutono dėsnį ir yra proporcinga m1*m2/r^2, o kai l >=1 kūnus veikia "baltoji jėga", kurios dydis proporcingas m1 * m2 * r (t.y., toldami kūnai ima vėl labiau traukti vienas kitą!)  
+Atstumu ```l < 1```, kūnų trauka tenkina Niutono dėsnį ir yra proporcinga ```m1*m2/r^2```, o kai ```l >=1``` kūnus veikia "baltoji jėga", kurios dydis proporcingas ```m1 * m2 * r``` (t.y., toldami kūnai ima vėl labiau traukti vienas kitą!)  
 Gugliafrazės: N-body problem

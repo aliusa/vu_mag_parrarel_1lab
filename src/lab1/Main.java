@@ -12,7 +12,6 @@ import java.util.Random;
  * Teisingas rezultatas: visi bilietai turi būti parduodami, bet ne daugiau, nei egzistuoja.
  * Neteisingas scenarijus: išspausdinama, kad bilietų parduota daugiau, nei buvo.
  */
-
 public class Main {
     public static void main(String[] args) {
         TicketCounter ticketCounter = new TicketCounter(10);

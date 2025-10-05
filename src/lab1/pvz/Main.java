@@ -1,4 +1,4 @@
-package lab1.pavyzdys;
+package lab1.pvz;
 /*
  * Main.java
  * @author R.Vaicekauskas

@@ -1,7 +1,6 @@
 package lab2.v0;
 
 /**
- * Studijų knygelės paskutinis skaitmuo: 0.
  * <p>
  * "Klasikinis" įvykių skaitiklis.
  * Inicializuojamas 0. Turi funkcijas:

@@ -3,8 +3,6 @@ package lab2.v3;
 import java.util.Random;
 
 /**
- * Studijų knygelės paskutinis skaitmuo: 3.
- *
  * <p>
  * 3. Klasikinis "skaitytojų - rašytojų" veikos sinchronizatorius
  * kai skaitančiųjų "skaitytojų" skaičius negali viršyti N - programos

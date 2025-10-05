@@ -18,7 +18,7 @@ Darbinė aplinka programos derinimui ir vykdymui - MIF išskirstytų skaičiavim
 
 Skirtingai negu 3 užduotyje reikia:
 * sukurti C/C++ programą (testinės programėlės pavyzdys [connectivity.c](./connectivity.c))
-* prisijungus prie klasterio programą nusikopijuoti ir sukompiliuoti (pvz., komanda **mpicc -o connectivity connectivity.c**);
-* įvykdyti, nurodant procesorių skaičių ne didesnį negu rezervuotų, (pvz., **mpirun -np 4 connectivity**);
+* prisijungus prie klasterio programą nusikopijuoti ir sukompiliuoti (pvz., komanda ```mpicc -o connectivity connectivity.c```);
+* įvykdyti, nurodant procesorių skaičių ne didesnį negu rezervuotų, (pvz., ```mpirun -np 4 connectivity```);
 
-Vykdyti eksperimentus rezervuojant bent 32 procesorius. Yra limitai atminčiai ir failų dydžiui ir CPU (sužinoti galima su komanda - limit).
+Vykdyti eksperimentus rezervuojant bent 32 procesorius. Yra limitai atminčiai ir failų dydžiui ir CPU (sužinoti galima su komanda - ```limit```).
