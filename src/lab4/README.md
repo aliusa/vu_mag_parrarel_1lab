@@ -17,7 +17,7 @@ Užduoties variantas- toks pat kaip ir 3 užduotyje, arba, pasirenkant kitą - s
 Darbinė aplinka programos derinimui ir vykdymui - MIF išskirstytų skaičiavimų klasteris
 
 Skirtingai negu 3 užduotyje reikia:
-* sukurti C/C++ programą (testinės programėlės pavyzdys connectivity.c)
+* sukurti C/C++ programą (testinės programėlės pavyzdys [connectivity.c](./connectivity.c))
 * prisijungus prie klasterio programą nusikopijuoti ir sukompiliuoti (pvz., komanda **mpicc -o connectivity connectivity.c**);
 * įvykdyti, nurodant procesorių skaičių ne didesnį negu rezervuotų, (pvz., **mpirun -np 4 connectivity**);
 

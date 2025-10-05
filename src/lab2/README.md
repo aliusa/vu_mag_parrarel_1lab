@@ -17,7 +17,7 @@ Programa veikia konsoliniu režimu. Į konsolę išvedami esminiai įvykiai.
 
 ### VARIANTAI
 
-<ins>0. "Klasikinis" įvykių skaitiklis.</ins>  
+<ins>[0. "Klasikinis" įvykių skaitiklis.](./v0/Main.java)</ins>  
 Inicializuojamas 0. Turi funkcijas
 advance() - nedalomai padidinti skaitliuką vienetu;
 read   () - nuskaityti skaitliuko reiksmę;
@@ -40,7 +40,7 @@ giją laukia, kol kvietėjų skaičius taps lygus N. Tada visos N gijos
 "paleidžiamos" o barjeras reinicializuojamas - paruošiamas sekančiam
 waitBarier() kvietiniui.
 
-<ins>3. Klasikinis "skaitytojų - rašytojų" veikos sinchronizatorius</ins>  
+<ins>[3. Klasikinis "skaitytojų - rašytojų" veikos sinchronizatorius](./v3/Main.java)</ins>  
 kai skaitančiųjų "skaitytojų" skaičius negali viršyti N - programos  
 parametras (pastaba - nepainioti su gamintojo-vartotojo problema !).
 

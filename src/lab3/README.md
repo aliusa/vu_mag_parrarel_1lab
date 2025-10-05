@@ -24,7 +24,7 @@ Eksperimentiškai nustatyti algoritmo spartinimo, plečiamumo (scaling) bei vykd
 
 **Pastaba**. Rašydami (ypač) java programas, stenkitės išvengti pakartotinio objektų sukūrimo-atlaisvinimo, kadangi "šiukšlių surinkėjas" gali iškraipyti laikines programos vykdymo charakteristikas.
 
-Žemiau pateikta programa leidžia patikrinti java programos vykdymo spartinimą paskirties sistemoje: TTest.java, TTest.class (atnaujinta 2013-12-08).
+Žemiau pateikta programa leidžia patikrinti java programos vykdymo spartinimą paskirties sistemoje: [TTest.java](./pvz/TTest.java), TTest.class (atnaujinta 2013-12-08).
 
 
 ### Variantai
@@ -39,7 +39,7 @@ Pastaba: nors užduoties algoritmas formuluojamas nuoseklaus algoritmo terminais
 T.y., metodo esmė - dviejų gretimų elementų sukeitimas vietomis.  
 Gugliafrazė: "odd even sort"
 
-<ins>3. Masyvo elementų rūšiavimas "suliejimo" pavidalo metodu.</ins>  
+<ins>[3. Masyvo elementų rūšiavimas "suliejimo" pavidalo metodu.](./v3/ParallelMergeSortTopDown.java)</ins>  
 (Galite nustatyti, kad masyvo dydis 2-ju laipsnis).  
 Gugliafrazė: "merge sort"
 
