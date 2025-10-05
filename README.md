@@ -1,6 +1,6 @@
 # Lygiagretūs ir išskirstyti skaičiavimai
 
-[Laboratorini 1](./src/lab1/README.md)  
-[Laboratorini 2](./src/lab2/README.md)  
-[Laboratorini 3](./src/lab3/README.md)  
-[Laboratorini 4](./src/lab4/README.md)  
+[Laboratorinis 1](./src/lab1/README.md)  
+[Laboratorinis 2](./src/lab2/README.md)  
+[Laboratorinis 3](./src/lab3/README.md)  
+[Laboratorinis 4](./src/lab4/README.md)  
