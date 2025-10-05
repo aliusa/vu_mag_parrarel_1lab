@@ -22,7 +22,7 @@ Bendras resursas - dvi sąskaitos. Keli procesai vykdo pervedimus iš vienos są
 
 1 pastaba. Nebus laikoma tinkama tokia programa, kuri iliustruoja gijų vykdymo nedeterminizmą, bet negalime nurodyti koks deterministinis vyksmas yra teisingas. Pavyzdžiui, netiks "PingPong" (žr. žemiau) pavidalo sprendimas. 2 pastaba. Nerašyti sudėtingų programų, kuriose procesai bendrauja tarpusavyje, naudodami įvykių mechanizmą (wait(), notify()).
 
-Pavyzdys.java - užduoties sprendimo java šablonas (matematikams). PS studentams - nenaudoti!
+[Pavyzdys.java](./pavyzdys/Main.java) - užduoties sprendimo java šablonas (matematikams). PS studentams - nenaudoti!
 
 Jums gali praversti pirmojo užsiėmimo programos. PingPong programėlė, kuri demonstruoja gijų paleidimą , SUN'o gijų vedlys ar priminimas iš Java paskaitos apie gijas.
 
