@@ -1,4 +1,4 @@
-package lab3v3_v2;
+package lab3.v3_v2;
 
 import java.util.*;
 

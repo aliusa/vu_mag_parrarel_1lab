@@ -1,4 +1,4 @@
-package lab3pvz;
+package lab3.pvz;
 
 /** Simple system multithreading performance test.
  Version 1.3

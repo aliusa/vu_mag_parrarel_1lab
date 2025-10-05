@@ -1,4 +1,4 @@
-package lab3v3;
+package lab3.v3;
 
 import java.util.Arrays;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package lab2v0;
+package lab2.v0;
 
 /**
  * Studijų knygelės paskutinis skaitmuo: 0.
