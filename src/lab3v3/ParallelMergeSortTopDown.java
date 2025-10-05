@@ -29,11 +29,11 @@ import java.util.Random;
  * args[1] – masyvo dydis (turi būti 2^k)
  * args[2] – režimas: "debug" arba "fast"
  */
-public class ParallelMergeSort {
+public class ParallelMergeSortTopDown {
     private static int nThreads = 4;
     private static boolean debug = false;
     private static int[] array;
-    private static int[] auxiliary;
+    private static int[] temp;
 
     public static void main(String[] args) {
         if (args.length != 3) {
@@ -51,14 +51,13 @@ public class ParallelMergeSort {
 
         //generate random number array
         array = new int[size];
-        auxiliary = new int[size];
+        temp = new int[size];
         Random rnd = new Random();
         for (int i = 0; i < size; i++) {
             array[i] = rnd.nextInt(100000);
         }
 
         System.out.println(nThreads + " gijos paleistos. Masyvo dydis: " + size);
-        //Pradinė masyvo būsena
         if (debug) {
             System.out.println("Pradinis masyvas: " + Arrays.toString(Arrays.copyOf(array, Math.min(size, 64))) + (Math.min(size, 64) == size ? "" : " ..."));
         }
@@ -92,8 +91,8 @@ public class ParallelMergeSort {
         int mid = (left + right) / 2;
 
         //recursively sort both runs from array A[] into B[]
-        Thread leftThread = new Thread(() -> topDownSplitMerge(arr, left, mid, threads / 2));
-        Thread rightThread = new Thread(() -> topDownSplitMerge(arr, mid + 1, right, threads / 2));
+        Thread leftThread = new Thread(() -> topDownSplitMerge(arr, left, mid, threads / 2-1));
+        Thread rightThread = new Thread(() -> topDownSplitMerge(arr, mid + 1, right, threads / 2-1));
 
         leftThread.start();
         rightThread.start();
@@ -132,24 +131,20 @@ public class ParallelMergeSort {
         int k = left;
 
         while (i <= mid && j <= right) {
-            auxiliary[k++] = (arr[i] <= arr[j]) ? arr[i++] : arr[j++];
+            temp[k++] = (arr[i] <= arr[j]) ? arr[i++] : arr[j++];
         }
-        while (i <= mid) auxiliary[k++] = arr[i++];
-        while (j <= right) auxiliary[k++] = arr[j++];
+        while (i <= mid) temp[k++] = arr[i++];
+        while (j <= right) temp[k++] = arr[j++];
 
         for (i = left; i <= right; i++) {
-            arr[i] = auxiliary[i];
+            arr[i] = temp[i];
         }
 
         if (debug) {
             //System.out.printf("Sulieta [%d..%d] ir [%d..%d]%n", left, mid, mid + 1, right);
 
-            System.out.printf("[%s] Suliejimas. Rikiuota [%d..%d] (src) į [%d..%d].%n",
+            System.out.printf("[%s] Suliejimas. Rikiuota [%d..%d] ir [%d..%d]%n",
                     Thread.currentThread().getName(), left, mid, mid + 1, right);
-            //try {
-            //Thread.sleep(20);
-            //} catch (InterruptedException ignored) {
-            //}
         }
     }
 }
