@@ -9,7 +9,7 @@ import java.util.Random;
  * parametras (pastaba - nepainioti su gamintojo-vartotojo problema !).
  * </p>
  */
-public class Main {
+public class MainV3 {
     public static void main(String[] args) {
         int maxReaders = 5;
         if (args.length > 0) {

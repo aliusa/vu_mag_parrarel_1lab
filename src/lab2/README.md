@@ -59,11 +59,11 @@ Gija, vykdanti skaitymo veiksmą nurodo savo numerį iš intervalo 0..N-1.
 
 <ins>8. Masyvo "užraktas"  turi operacijas</ins>  
 ```lock(int indexFrom, in indexTo)```, ```unlock(int indexFrom, in indexTo)```.  
-Metodas lock(), užrakina masyvo elementus nuo ```indexFrom``` iki ```indexTo``` imtinai.  
+Metodas ```lock()```, užrakina masyvo elementus nuo ```indexFrom``` iki ```indexTo``` imtinai.  
 Jeigu bent vienas iš elementų jau "užrakintas" kitos gijos, kreipinys ```lock()``` blokuojasi. ```unlock()``` - atlaisvina užrakintus elementus (su tais pačiais indeksais).  
 Realizuoti užraktą bei prasmingai panaudoti (pavyzdžiui, rušiuojant masyvo elementus)
 
-<ins>9. Barjeras - su duomenų apsikeitimu</ins>  
+<ins>9. Barjeras - su duomenų apsikeitimu</ins> (papildomas)  
 Objektas inicializuojamas "sąveikoje" dalyvaujančių gijų skaiciumi (N).  
 Pagrindinė operacija - ```int waitBarier(int reikšmė)```.  
 Kiekviena šį metodą iškvietusi giją laukia, kol kvietėjų skaičius taps lygus N.  

@@ -9,8 +9,9 @@ package lab2.v0;
  * * await  (value) - laukti, kol skaitliuko reiksme nesusilygins su value
  * Pateikti skaitiklio prasmingą panaudojimą.
  */
-public class Main {
+public class MainV0 {
     public static void main(String[] args) {
+        int startTicketCount = 17;
         EventCounter eventCounter = new EventCounter();
 
         Thread manager5 = new Thread(() -> eventCounter.await(5), "Vadybininkas[5]");
@@ -22,8 +23,7 @@ public class Main {
         manager15.start();
 
         //Bilietus nuperka po vieną
-
-        for (int i = 0; i < 17; i++) {
+        for (int i = 1; i <= startTicketCount; i++) {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
@@ -60,3 +60,4 @@ class EventCounter {
         return soldTickets;
     }
 }
+//TODO: kai adveanced padaro - kad dar padarytu paskui sum. kad poto dar padaryti tikrinima

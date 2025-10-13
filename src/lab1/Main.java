@@ -27,14 +27,11 @@ public class Main {
             }
         };
 
-
         //Sukuriame kelias gijas (pirkėjus)
-        Thread thread1 = new Thread(buyerTask, "Pirkėjas-1");
-        Thread thread2 = new Thread(buyerTask, "Pirkėjas-2");
-        Thread thread3 = new Thread(buyerTask, "Pirkėjas-3");
-        thread1.start();
-        thread2.start();
-        thread3.start();
+        for (int i = 0; i < 3; i++) {
+            Thread thread = new Thread(buyerTask, "Pirkėjas-" + i);
+            thread.start();
+        }
     }
 }
 
@@ -46,23 +43,22 @@ class TicketCounter {
         this.tickets = tickets;
     }
 
-    //KRITINĖ VIETA. be "synchronized" kelios gijos (threads (pirkėjai)) tuo pat metu pakeičia "tickets" reikšmę
-    //public boolean sellTicket(String buyerName) {
-    public synchronized boolean sellTicket(String buyerName) {
-
+    public boolean sellTicket(String buyerName) {
         int buyCount = 1;
         try {
-            if (tickets > 0) {
-                //Prailginam laiką, kad geriau parodyt "data race" problemą, kad kuri nors gija nespėtų pakeist "tickets" reikšmės
-                //Thread.sleep((int) (Math.random() * 50));
-                Thread.sleep(RANDOM.nextInt(101)+50);//50 - min, 100 - max
+            //KRITINĖ VIETA. be "synchronized" kelios gijos (threads (pirkėjai)) tuo pat metu pakeičia "tickets" reikšmę
+            //synchronized (this) {
+                if (tickets > 0) {
+                    //Prailginam laiką, kad geriau parodyt "data race" problemą, kad kuri nors gija nespėtų pakeist "tickets" reikšmės
+                    Thread.sleep(RANDOM.nextInt(101)+50);//50 - min, 100 - max
 
-                tickets -= buyCount;
+                    tickets -= buyCount;
 
-                System.out.println(buyerName + " nuspirko " + buyCount + " bilietą(-us). Liko " + tickets + " vnt.");
-                return true;
-            }
-            throw new Exception(buyerName + " bandė pirkti bilietus, bet neužteko!");
+                    System.out.println(buyerName + " nuspirko " + buyCount + " bilietą(-us). Liko " + tickets + " vnt.");
+                    return true;
+                }
+                throw new Exception(buyerName + " bandė pirkti bilietus, bet neužteko!");
+            //}
         } catch (Exception e) {
             System.err.println(e.getMessage());
             return false;
