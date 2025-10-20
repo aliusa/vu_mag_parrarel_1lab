@@ -11,16 +11,13 @@ package lab2.v0;
  */
 public class MainV0 {
     public static void main(String[] args) {
-        int startTicketCount = 17;
+        int startTicketCount = 12;
         EventCounter eventCounter = new EventCounter();
 
-        Thread manager5 = new Thread(() -> eventCounter.await(5), "Vadybininkas[5]");
-        Thread manager10 = new Thread(() -> eventCounter.await(10), "Vadybininkas[10]");
-        Thread manager15 = new Thread(() -> eventCounter.await(15), "Vadybininkas[15]");
+        Manager manager10 = new Manager(eventCounter, 10, "Vadybininkas[10]");
+        Thread manager5Thread = new Thread(manager10);
 
-        manager5.start();
-        manager10.start();
-        manager15.start();
+        manager5Thread.start();
 
         //Bilietus nuperka po vieną
         for (int i = 1; i <= startTicketCount; i++) {
@@ -31,33 +28,90 @@ public class MainV0 {
             }
             eventCounter.advance();
         }
-        System.out.println("\n[PABAIGA] Visi bilietai parduoti!");
+        System.out.println("\n=== PABAIGA. Visi bilietai parduoti! ===");
+
+
+        //Laukiame, kol visi vadybininkai pabaigs savo darbą
+        try {
+            manager5Thread.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        //Tikrinimas — ar suma teisinga
+        System.out.println("\n=== ATASKAITA ===");
+        System.out.println("Pagrindinis skaitiklis: " + eventCounter.read());
+        System.out.println(manager10.getName() + " suskaičiavo: " + manager10.getMySoldTickets());
+        if (eventCounter.read() == manager10.getMySoldTickets()) {
+            System.out.println((char)27 + "[92m" + "SUCCESS");
+        } else {
+            System.out.println((char)27 + "[91m" + "FAILED");
+        }
     }
 }
 
 class EventCounter {
     private int soldTickets = 0;
 
+    public synchronized void advance() {
+        soldTickets++;
+        System.out.println("[KASA] Parduotas bilietas #" + soldTickets);
+        notifyAll(); //Pažadina laukiančius vadybininkus
+    }
+
+    /**
+     * Laukia, kol pasiekiama konkreti reikšmė
+     */
     public synchronized void await(int targetTickets) {
-        while (read() < targetTickets) {
-            System.out.println(Thread.currentThread().getName() + " laukia kol bus parduota " + targetTickets + " bilietų. Dabar: " + read());
+        while (soldTickets < targetTickets) {
             try {
                 wait();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
-        System.out.println(Thread.currentThread().getName() + " praneša: Pasiekta " + targetTickets + " bilietų.");
-    }
-
-    public synchronized void advance() {
-        soldTickets++;
-        System.out.println("\n[KASA] Parduotas bilietas nr #" + read());
-        notifyAll();
     }
 
     public synchronized int read() {
         return soldTickets;
     }
 }
-//TODO: kai adveanced padaro - kad dar padarytu paskui sum. kad poto dar padaryti tikrinima
+/**
+ * Vadybininkas, kuris seka pagrindinį skaitiklį ir kaupia savo bilietų kiekį.
+ */
+class Manager implements Runnable {
+    private final EventCounter eventCounter;
+    private final int targetTickets;
+    private final String name;
+    private int mySoldTickets = 0;
+
+    public Manager(EventCounter eventCounter, int targetTickets, String name) {
+        this.eventCounter = eventCounter;
+        this.targetTickets = targetTickets;
+        this.name = name;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            eventCounter.await(mySoldTickets + 1); //Laukia kol atsiras naujas bilietas
+            mySoldTickets++;
+
+            System.out.println(name + " atnaujina: mano skaitiklis = " + mySoldTickets);
+
+            if (mySoldTickets >= targetTickets) {
+                System.out.println(name + " praneša: pasiekta " + targetTickets + " bilietų riba! Baigiu darbą.");
+                break;
+            }
+        }
+    }
+
+    public int getMySoldTickets() {
+        return mySoldTickets;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
