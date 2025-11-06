@@ -39,7 +39,7 @@ Pastaba: nors užduoties algoritmas formuluojamas nuoseklaus algoritmo terminais
 T.y., metodo esmė - dviejų gretimų elementų sukeitimas vietomis.  
 Gugliafrazė: "odd even sort"
 
-<ins>[3. Masyvo elementų rūšiavimas "suliejimo" pavidalo metodu.](./v3/ParallelMergeSortTopDown.java)</ins>  
+<ins>[3. Masyvo elementų rūšiavimas "suliejimo" pavidalo metodu.](./v3)</ins>  
 (Galite nustatyti, kad masyvo dydis 2-ju laipsnis).  
 Gugliafrazė: "merge sort"
 
