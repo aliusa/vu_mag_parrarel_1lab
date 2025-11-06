@@ -44,34 +44,48 @@ public class ParallelMergeSortTopDown {
         int size = Integer.parseInt(args[1]);
         debug = args[2].equalsIgnoreCase("debug");
 
-        //Masyvo dydis turi būti >= 2 kad būtų ką
-        if (size < 2) {
-            size = 2;
+        int avg = 0;
+        int avgIterations = 100;
+        int[] threadsArray = new int[] {32,16,8,6,4,3,2,1};//number of threads to test with
+        for (int j = 0; j < threadsArray.length; j++) {
+            nThreads = threadsArray[j];
+            avg = 0;
+            for (int iavg = avgIterations; iavg > 0; iavg--) {
+
+                //Masyvo dydis turi būti >= 2 kad būtų ką
+                if (size < 2) {
+                    size = 2;
+                }
+
+                //generate random number array
+                array = new int[size];
+                temp = new int[size];
+                Random rnd = new Random();
+                for (int i = 0; i < size; i++) {
+                    array[i] = rnd.nextInt(100000);
+                }
+
+                if (debug) {
+                    System.out.println(nThreads + " gijos paleistos. Masyvo dydis: " + size);
+                    System.out.println("Pradinis masyvas: " + Arrays.toString(Arrays.copyOf(array, Math.min(size, 64))) + (Math.min(size, 64) == size ? "" : " ..."));
+                }
+
+
+                long t0 = System.currentTimeMillis();
+                topDownSplitMerge(array, 0, array.length - 1, nThreads);
+                long t1 = System.currentTimeMillis();
+
+                if (debug)
+                    System.out.println("Surikiuotas masyvas: " + Arrays.toString(Arrays.copyOf(array, Math.min(size, 64))) + (Math.min(size, 64) == size ? "" : " ..."));
+
+                if (debug)
+                    System.out.println("\nLaikas: " + (t1 - t0) + " ms");
+
+                avg += (t1 - t0);
+            }
+            if (!debug)
+                System.out.println("\navg laikas: " + (avg / avgIterations) + " ms (" + nThreads + " thread/s)");
         }
-
-        //generate random number array
-        array = new int[size];
-        temp = new int[size];
-        Random rnd = new Random();
-        for (int i = 0; i < size; i++) {
-            array[i] = rnd.nextInt(100000);
-        }
-
-        System.out.println(nThreads + " gijos paleistos. Masyvo dydis: " + size);
-        if (debug) {
-            System.out.println("Pradinis masyvas: " + Arrays.toString(Arrays.copyOf(array, Math.min(size, 64))) + (Math.min(size, 64) == size ? "" : " ..."));
-        }
-
-
-        long t0 = System.currentTimeMillis();
-        topDownSplitMerge(array, 0, array.length - 1, nThreads);
-        long t1 = System.currentTimeMillis();
-
-        if (debug)
-            System.out.println("Surikiuotas masyvas: " + Arrays.toString(Arrays.copyOf(array, Math.min(size, 64))) + (Math.min(size, 64) == size ? "" : " ..."));
-
-        if (!debug)
-            System.out.println("\nLaikas: " + (t1 - t0) + " ms");
     }
 
     /**
