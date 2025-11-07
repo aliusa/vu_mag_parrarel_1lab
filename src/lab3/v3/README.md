@@ -74,3 +74,9 @@ Matome, kad su mažais kiekiais (2^14–2^15) - didėjant gijų skaičiui - proc
 Išėmus duomenis, kurie letėja (2^14–2^15) ir žiūrint tik 2^16–2^25 duomenis - matome, kad daugėjant duomenim - gijų darbas reikšmingai neletėja (nekyla į viršų).
 
 ![Chart](./results/chart3.png "Chart")
+
+# Realus gretisi vs idealus
+
+Kai matome - didėjant gijų skaičiui - ne tiek daug proporcingai greitėja, kaikuriais atvejais (2-4 gijom) net negreitėja.
+
+![Chart](./results/chart4.png "Chart")
