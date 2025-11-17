@@ -45,8 +45,9 @@ public class ParallelMergeSortTopDown {
         debug = args[2].equalsIgnoreCase("debug");
 
         int avg = 0;
-        int avgIterations = 100;
-        int[] threadsArray = new int[] {32,16,8,6,4,3,2,1};//number of threads to test with
+        int avgIterations = 25;
+        //int[] threadsArray = new int[] {32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1};//number of threads to test with
+        int[] threadsArray = new int[] {12,11,10,9,8,7,6,5,4,3,2,1};//number of threads to test with
         for (int j = 0; j < threadsArray.length; j++) {
             nThreads = threadsArray[j];
             avg = 0;
@@ -84,7 +85,7 @@ public class ParallelMergeSortTopDown {
                 avg += (t1 - t0);
             }
             if (!debug)
-                System.out.println("\navg laikas: " + (avg / avgIterations) + " ms (" + nThreads + " thread/s)");
+                System.out.println("\navg laikas ("+avgIterations+" ciklų): " + (avg / avgIterations) + " ms (" + nThreads + " thread/s)");
         }
     }
 

@@ -44,39 +44,27 @@ Testavimas atliktas 100 kartų išvedant vidurkius.
 Tarp 1 ir 2 gijų skirtumas ženklus.  
 Kaip matome tarp 2 ir 4 gijų toks pat greitis.
 
-![Chart](./results/chart1.png "Chart")
-
 ### Analizė
 
-## Procentinis pagreitėjimas nuo 1 gijos (visi duomenys)
+## Pagreitėjimas
 
-| Masyvo dydis      | 2 gijos % | 3 gijos % | 4 gijos % | 6 gijos % | 8 gijos % | 16 gijų % | 32 gijos % |
-|:------------------|----------:|----------:|----------:|----------:|----------:|----------:|-----------:|
-| 2^14 (16384)      |         0 |    -100 % |    -100 % |       0 % |       0 % |     100 % |      300 % |
-| 2^15 (32768)      |     -50 % |     -50 % |     -50 % |     -50 % |     -50 % |       0 % |      150 % |
-| 2^16 (65536)      |     -40 % |     -40 % |     -40 % |     -60 % |     -60 % |     -40 % |      -40 % |
-| 2^17 (131072)     |     -50 % |     -50 % |     -50 % |     -67 % |     -67 % |     -67 % |      -50 % |
-| 2^18 (262144)     |     -48 % |     -48 % |     -48 % |     -65 % |     -65 % |     -70 % |      -65 % |
-| 2^19 (524288)     |     -44 % |     -52 % |     -46 % |     -70 % |     -72 % |     -78 % |      -78 % |
-| 2^20 (1048576)    |     -48 % |     -53 % |     -48 % |     -71 % |     -70 % |     -79 % |      -81 % |
-| 2^21 (2097152)    |     -46 % |     -42 % |     -46 % |     -67 % |     -69 % |     -80 % |      -83 % |
-| 2^22 (4194304)    |     -49 % |     -46 % |     -49 % |     -68 % |     -70 % |     -81 % |      -86 % |
-| 2^23 (8388608)    |     -47 % |     -49 % |     -46 % |     -71 % |     -70 % |     -81 % |      -86 % |
-| 2^24 (16777216)   |     -48 % |     -50 % |     -49 % |     -71 % |     -71 % |     -82 % |      -86 % |
-| 2^25 (33554432)   |     -47 % |     -48 % |     -47 % |     -71 % |     -70 % |     -82 % |      -86 % |
+Analizuojant 2^25 dydžio duomenų masyvą, teorinius spartėjimas skaičiuotas pagal formulę `Sreal(p)=n*LOG(n,2)`.  
+`t(2)=n/2*LOG(n/2,2)+n`, `spartėjimas==Sreal(p)/t(2)`  
+`t(4)=n/4*LOG(n/4,2)+n/2+n`, `spartėjimas=Sreal(p)/t(4)`  
+`t(16)=n/8*LOG(n/8,2)+n/4+n/2+n`, `spartėjimas=Sreal(p)/t(8)`  
+`t(16)=n/16*LOG(n/16,2)+n/8+n/4+n/2+n`, `spartėjimas=Sreal(p)/t(16)`  
+`t(32)=n/32*LOG(n/32,2)+n/16+n/8+n/4+n/2+n`, `spartėjimas=Sreal(p)/t(32)`
 
-Matome, kad su mažais kiekiais (2^14–2^15) - didėjant gijų skaičiui - procentiškai letėja greitis.
+| Masyvo dydis         | 1 gija | 2 gijos | 4 gijos | 8 gijos | 16 gijų | 32 gijos |
+|:---------------------|-------:|--------:|--------:|--------:|--------:|---------:|
+| Realus spartėjimas   |   1.00 |    1.90 |    1.87 |    3.23 |    5.13 |     6.46 |
+| Teorinis spartėjimas |   1.00 |    1.92 |    3.45 |    5.56 |    7.84 |     9.76 |
 
+Matome, kad tik nuo 8 branduolių pagreitėja. 
+
+![Chart](./results/chart1.png "Chart")
+
+
+
+Atlikus testavimą su kiekviena gija nuo 1 iki 32 - gaunam kurkas išreikšmingesnį laiptuotą grafiką:
 ![Chart](./results/chart2.png "Chart")
-
-## Procentinis pagreitėjimas nuo 1 gijos (2^16 - 2^25)
-
-Išėmus duomenis, kurie letėja (2^14–2^15) ir žiūrint tik 2^16–2^25 duomenis - matome, kad daugėjant duomenim - gijų darbas reikšmingai neletėja (nekyla į viršų).
-
-![Chart](./results/chart3.png "Chart")
-
-# Realus gretisi vs idealus
-
-Kai matome - didėjant gijų skaičiui - ne tiek daug proporcingai greitėja, kaikuriais atvejais (2-4 gijom) net negreitėja.
-
-![Chart](./results/chart4.png "Chart")
