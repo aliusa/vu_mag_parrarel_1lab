@@ -46,8 +46,8 @@ public class ParallelMergeSortTopDown {
 
         int avg = 0;
         int avgIterations = 25;
-        //int[] threadsArray = new int[] {32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1};//number of threads to test with
-        int[] threadsArray = new int[] {12,11,10,9,8,7,6,5,4,3,2,1};//number of threads to test with
+        int[] threadsArray = new int[] {32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1};//number of threads to test with
+        //int[] threadsArray = new int[] {12,11,10,9,8,7,6,5,4,3,2,1};//number of threads to test with
         for (int j = 0; j < threadsArray.length; j++) {
             nThreads = threadsArray[j];
             avg = 0;
